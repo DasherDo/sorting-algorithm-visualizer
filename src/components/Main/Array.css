@@ -1,0 +1,15 @@
+.item {
+    color: black;
+    width: auto;
+}
+
+.array {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    color: blue;
+    border: 1px solid black;
+    width: 100vw;
+    height: 100vh
+}
