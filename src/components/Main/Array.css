@@ -9,4 +9,5 @@
     width: 70vw;
     margin-top: 30vh;
     margin-left: 15vw;
+    align-items: flex-end;
 }

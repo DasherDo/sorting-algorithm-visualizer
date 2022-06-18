@@ -24,7 +24,7 @@ function ShuffleArray (len) {
     console.log(arr)
 
     //Puts each array item into it's own div with height proportional to the number
-    let output = arr.map(item => <div className='item' style={{height:`${item * 10}px`, bottom:'0px'}}> {item} </div>)
+    let output = arr.map(item => <div className='item' style={{height:`${item * 10}px`}}></div>)
 
     return (
         <div className='array'>
