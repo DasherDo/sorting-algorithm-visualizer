@@ -7,7 +7,7 @@
 .array {
     display: flex;
     width: 70vw;
-    margin-top: 30vh;
+    margin-top: 20vh;
     margin-left: 15vw;
     align-items: flex-end;
 }
