@@ -10,7 +10,7 @@ function ShuffleArray (len) {
 
     console.log(arr)
     
-    for (let i = len - 1; i > 0; i--) //Change 10 to len after testing
+    for (let i = len['len'] - 1; i > 0; i--) //Change 10 to len after testing
     {
         
         // Pick a random index from 0 to i inclusive
@@ -21,8 +21,10 @@ function ShuffleArray (len) {
         [arr[i], arr[j]] = [arr[j], arr[i]];
     }
     
+    console.log(arr)
+
     //Puts each array item into it's own div with height proportional to the number
-    let output = arr.map(item => <div className='item' style={{'height':`${item}fr`}}> {item} </div>)
+    let output = arr.map(item => <div className='item' style={{height:`${item * 10}px`, bottom:'0px'}}> {item} </div>)
 
     return (
         <div className='array'>

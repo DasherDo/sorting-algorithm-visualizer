@@ -5,8 +5,8 @@ import './Array.css'
 function VisualizeArray () {
 
     return (
-        <div className='array'>
-            <ShuffleArray len={15}/>
+        <div className='container'>
+            <ShuffleArray len={50}/>
         </div>
     )
 }
