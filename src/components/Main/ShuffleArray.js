@@ -1,13 +1,16 @@
 import React from 'react';
-import Array from './Array.js'
 
 function ShuffleArray (len) {
- 
-    let arr = Array.from({length: 10}, () => (Math.floor(Math.random() * 100))%10);
+
+    //Creates array with numbers 1 to len
+    let arr = Array.from({length:len['len']}, (_, i) => i + 1 );
         // Start from the last element and swap
         // one by one. We don't need to run for
         // the first element that's why i > 0
-    for (let i = len - 1; i > 0; i--)
+
+    console.log(arr)
+    
+    for (let i = len['len'] - 1; i > 0; i--) //Change 10 to len after testing
     {
         
         // Pick a random index from 0 to i inclusive
@@ -17,12 +20,15 @@ function ShuffleArray (len) {
         // at random index
         [arr[i], arr[j]] = [arr[j], arr[i]];
     }
-
-    console.log(arr)
     
+    console.log(arr)
+
+    //Puts each array item into it's own div with height proportional to the number
+    let output = arr.map(item => <div className='item' style={{height:`${item * 10}px`}}></div>)
+
     return (
-        <div>
-            <Array array={arr} />
+        <div className='array'>
+            {output}
         </div>
     )
 }
