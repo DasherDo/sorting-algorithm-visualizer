@@ -10,6 +10,11 @@ function BubbleSort (array) {
             };
         };
     };
+    return (
+        <div>
+            {array}
+        </div>
+    )
 };
 
 export default BubbleSort
