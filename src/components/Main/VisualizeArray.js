@@ -2,11 +2,13 @@ import React from 'react';
 import ShuffleArray from './ShuffleArray.js'
 import './Array.css'
 
-function VisualizeArray () {
+function VisualizeArray (len) {
+
+    console.log(len)
 
     return (
         <div className='container'>
-            <ShuffleArray len={50}/>
+            <ShuffleArray len={len['len']}/>
         </div>
     )
 }
