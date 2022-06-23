@@ -7,8 +7,6 @@ function ShuffleArray (len) {
         // Start from the last element and swap
         // one by one. We don't need to run for
         // the first element that's why i > 0
-
-    console.log(arr)
     
     for (let i = len['len'] - 1; i > 0; i--) //Change 10 to len after testing
     {
@@ -21,8 +19,6 @@ function ShuffleArray (len) {
         [arr[i], arr[j]] = [arr[j], arr[i]];
     }
     
-    console.log(arr)
-
     //Puts each array item into it's own div with height proportional to the number
     let output = arr.map(item => <div className='item' style={{height:`${item * 10}px`}}></div>)
 
