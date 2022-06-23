@@ -22,15 +22,15 @@ function ShuffleArray (len) {
 
     //Puts each array item into it's own div with height proportional to the number
     
-    let output = arr.map(item => <div className='item' style={{height:`${item * 10}px`}}></div>)
+    // const bubbleSortIteration = (array) => {
+    //     setOutput(array.map(item => <div className='item' style={{height:`${item * 10}px`}}></div>));
+    // }
 
-    const sleep = (ms) => {
-        return new Promise(resolve => setTimeout(resolve, ms))
-    }
+    let output = arr.map(item => <div className='item' style={{height:`${item * 10}px`}}></div>);
 
     return (
         <div className='array'>
-            {/* <BubbleSort array={arr} /> */}
+            {/* <BubbleSort array={arr} bubbleSortIteration={bubbleSortIteration}/> */}
             {output}
         </div>
     )
