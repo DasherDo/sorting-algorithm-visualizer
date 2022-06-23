@@ -1,6 +1,7 @@
 import React from 'react';
 
-function BubbleSort (array) {
+function BubbleSort ({array}) {
+
     for (let i = 0; i < array.length; i++) {
         for (let j = 0; j < (array.length - 1 - i); j++) {
             if (array[j] > array[j+1]) {
@@ -9,10 +10,14 @@ function BubbleSort (array) {
                 array[j+1] = temp;
             };
         };
+        break
     };
+
+    let output = array.map(item => <div className='item' style={{height:`${item * 10}px`}}></div>)
+
     return (
-        <div>
-            {array}
+        <div className='array'>
+            {output}
         </div>
     )
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+import BubbleSort from './SortingAlgorithms/BubbleSort'
 
 function ShuffleArray (len) {
 
@@ -18,12 +19,18 @@ function ShuffleArray (len) {
         // at random index
         [arr[i], arr[j]] = [arr[j], arr[i]];
     }
-    
+
     //Puts each array item into it's own div with height proportional to the number
+    
     let output = arr.map(item => <div className='item' style={{height:`${item * 10}px`}}></div>)
+
+    const sleep = (ms) => {
+        return new Promise(resolve => setTimeout(resolve, ms))
+    }
 
     return (
         <div className='array'>
+            {/* <BubbleSort array={arr} /> */}
             {output}
         </div>
     )
