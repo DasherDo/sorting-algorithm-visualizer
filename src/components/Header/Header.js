@@ -3,11 +3,22 @@ import './header.css'
 import Slider from './Slider';
 
 
-function Header () {
+function Header ({handleLengthChange}) {
+
+    const [val, setVal] = useState(5)
+
+    const handleChange = (value) => {
+        setVal(value)
+    }
+
+    useEffect(()=> {
+        handleLengthChange(val)
+    })
+
     return (
         <div className='header'>
-            This is the header
-            <Slider />
+            <Slider handleChange={handleChange}/>
+            {val}
         </div>
     )
 };
