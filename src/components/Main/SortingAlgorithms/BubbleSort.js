@@ -1,13 +1,7 @@
-import React from 'react';
+export function BubbleSortAnimations (array, len) {
 
-function BubbleSort ({arr}) {
-
-    const orderOfArrays = []
-
-    let array = [5,4,3,2,1];
-
-    for (let i = 0; i < array.length; i++) {
-        for (let j = 0; j < (array.length - 1 - i); j++) {
+    for (let i = 0; i < len; i++) {
+        for (let j = 0; j < (len - 1 - i); j++) {
             if (array[j] > array[j+1]) {
                 let temp = array[j];
                 array[j] = array[j+1];
@@ -15,15 +9,9 @@ function BubbleSort ({arr}) {
             };
             
         };
-        orderOfArrays.push(array);
     };
 
-    console.log(orderOfArrays)
+    console.log(array)
 
-    return (
-        <div>
-        </div>
-    );
+    return array;
 };
-
-export default BubbleSort
