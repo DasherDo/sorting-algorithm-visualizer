@@ -4,7 +4,7 @@ import './header.css'
 
 function Slider ({handleChange}) {
 
-    const [value, setValue] = useState(5);
+    const [value, setValue] = useState(3);
 
     return (
             <div className='slider'>
