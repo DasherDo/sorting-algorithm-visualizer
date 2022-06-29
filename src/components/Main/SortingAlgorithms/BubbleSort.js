@@ -1,4 +1,4 @@
-export function BubbleSortAnimations (array) {
+export function bubbleSortAnimations (array) {
     const animations = [];
 
     for(var i = 0; i < array.length; i++){

@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './Array.css'
 import { getMergeSortAnimations } from './SortingAlgorithms/MergeSort'
-import { BubbleSortAnimations } from './SortingAlgorithms/BubbleSort'
+import { bubbleSortAnimations } from './SortingAlgorithms/BubbleSort'
+import { insertionSortAnimations } from './SortingAlgorithms/InsertionSort';
 
 function VisualizeArray ({ len }) {
-
-    const [sorted, setSorted] = useState(false)
-    const [sortedArray, setSortedArray] = useState([])
 
     const ANIMATION_SPEED = 1;
 
@@ -27,12 +25,8 @@ function VisualizeArray ({ len }) {
         [arr[i], arr[j]] = [arr[j], arr[i]];
     }
 
-    useEffect(() => {
-        setSorted(false)
-    }, [len])
-
     const bubbleSort = () => {
-        const animations = BubbleSortAnimations(arr);
+        const animations = bubbleSortAnimations(arr);
         for (let i = 0; i < animations.length - 1; i++) {
             const arrayBars = document.getElementsByClassName('array-bar');
             const isColorChange = i % 4 < 2
@@ -59,6 +53,30 @@ function VisualizeArray ({ len }) {
         }
     };
 
+    const insertionSort = () => {
+        const animations = insertionSortAnimations(arr);
+        for (let i = 0; i < animations.length; i++) {
+        const arrayBars = document.getElementsByClassName('array-bar');
+        const isColorChange = i % 3 !== 2;
+        if (isColorChange) {
+            const [barOneIdx, barTwoIdx] = animations[i];
+            const barOneStyle = arrayBars[barOneIdx].style;
+            const barTwoStyle = arrayBars[barTwoIdx].style;
+            const color = i % 3 === 0 ? 'red' : 'aqua';
+            setTimeout(() => {
+            barOneStyle.backgroundColor = color;
+            barTwoStyle.backgroundColor = color;
+            }, i * ANIMATION_SPEED);
+        } else {
+            setTimeout(() => {
+            const [barOneIdx, newHeight] = animations[i];
+            const barOneStyle = arrayBars[barOneIdx].style;
+            barOneStyle.height = `${newHeight *  2}px`;
+            }, i * ANIMATION_SPEED);
+        }
+        }
+    };
+
     const mergeSort = () => {
         const animations = getMergeSortAnimations(arr);
         for (let i = 0; i < animations.length; i++) {
@@ -77,7 +95,7 @@ function VisualizeArray ({ len }) {
             setTimeout(() => {
             const [barOneIdx, newHeight] = animations[i];
             const barOneStyle = arrayBars[barOneIdx].style;
-            barOneStyle.height = `${newHeight}px`;
+            barOneStyle.height = `${newHeight * 2}px`;
             }, i * ANIMATION_SPEED);
         }
         }
@@ -89,6 +107,7 @@ function VisualizeArray ({ len }) {
             {arr.map((value, idx) => <div className='array-bar' key={idx} style={{height:`${value * 2}px`}}></div>)}
             <button onClick={bubbleSort}>Bubble Sort</button>
             <button onClick={mergeSort}>Merge Sort</button>
+            <button onClick={insertionSort}>Insertion Sort</button>
             
             
         </div>
