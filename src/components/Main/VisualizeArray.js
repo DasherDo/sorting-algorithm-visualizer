@@ -8,7 +8,7 @@ function VisualizeArray ({ len }) {
     const [sorted, setSorted] = useState(false)
     const [sortedArray, setSortedArray] = useState([])
 
-    const ANIMATION_SPEED = 100;
+    const ANIMATION_SPEED = 1;
 
     //Creates array with numbers 1 to len
     let arr = Array.from({length:len}, (_, i) => i + 1 );
@@ -52,8 +52,8 @@ function VisualizeArray ({ len }) {
                 const barOneStyle = arrayBars[barOneIdx].style;
                 const barTwoStyle = arrayBars[barTwoIdx].style;
                 setTimeout(() => {
-                    barOneStyle.height = `${barOneHeight * 10}px`;
-                    barTwoStyle.height= `${barTwoHeight * 10}px`;
+                    barOneStyle.height = `${barOneHeight * 2}px`;
+                    barTwoStyle.height= `${barTwoHeight * 2}px`;
                 }, i * ANIMATION_SPEED)
             }
         }
@@ -86,8 +86,7 @@ function VisualizeArray ({ len }) {
     return (
         <div className='array'>
             {/* <ShuffleArray len={len} getArray={getArray}/> */}
-            {!sorted && arr.map((value, idx) => <div className='array-bar' key={idx} style={{height:`${value * 10}px`}}></div>)}
-            {/* {sorted && sortedArray.map((value, idx) => <div className='array-bar' key={idx} style={{height:`${value * 10}px`}}></div>)}*/}
+            {arr.map((value, idx) => <div className='array-bar' key={idx} style={{height:`${value * 2}px`}}></div>)}
             <button onClick={bubbleSort}>Bubble Sort</button>
             <button onClick={mergeSort}>Merge Sort</button>
             

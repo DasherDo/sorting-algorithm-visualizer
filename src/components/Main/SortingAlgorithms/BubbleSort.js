@@ -1,7 +1,5 @@
 export function BubbleSortAnimations (array) {
     const animations = [];
-    const secondArray = array.slice()
-    console.log(secondArray)
 
     for(var i = 0; i < array.length; i++){
     
@@ -13,19 +11,18 @@ export function BubbleSortAnimations (array) {
           // is greater than the next iteration
           if(array[j] > array[j+1]){
             // If the condition is true then swap them
+            animations.push([j, array[j + 1]])
+            animations.push([j + 1, array[j]])
             var temp = array[j]
             array[j] = array[j + 1]
             array[j+1] = temp
-            animations.push([j, secondArray[j + 1]])
-            animations.push([j + 1, secondArray[j]])
-            
+
           }
           else {
-            animations.push([j, secondArray[j]])
-            animations.push([j + 1, secondArray[j + 1]])
+            animations.push([j, array[j]])
+            animations.push([j + 1, array[j + 1]])
           }
         }
       }
-    console.log(animations)
     return animations
 }
