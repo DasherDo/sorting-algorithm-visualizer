@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Array.css'
 import { getMergeSortAnimations } from './SortingAlgorithms/MergeSort'
 import { bubbleSortAnimations } from './SortingAlgorithms/BubbleSort'
@@ -6,14 +6,13 @@ import { insertionSortAnimations } from './SortingAlgorithms/InsertionSort';
 
 function VisualizeArray ({ len }) {
 
-    const ANIMATION_SPEED = 10;
+    const ANIMATION_SPEED = 1;
 
-    //Creates array with numbers 1 to len
     let arr = Array.from({length:len}, (_, i) => i + 1 );
-        // Start from the last element and swap
-        // one by one. We don't need to run for
-        // the first element that's why i > 0
-    
+    // Start from the last element and swap
+    // one by one. We don't need to run for
+    // the first element that's why i > 0
+
     for (let i = len - 1; i > 0; i--) //Change 10 to len after testing
     {
         
@@ -24,7 +23,7 @@ function VisualizeArray ({ len }) {
         // at random index
         [arr[i], arr[j]] = [arr[j], arr[i]];
     }
-
+    
     const bubbleSort = () => {
         const animations = bubbleSortAnimations(arr);
         for (let i = 0; i < animations.length - 1; i++) {
@@ -69,7 +68,7 @@ function VisualizeArray ({ len }) {
                 }, i * ANIMATION_SPEED)
             }
             else {
-                const [operation , barOneIdx, barOneHeight] = animations[i];
+                const [barOneIdx, barOneHeight] = animations[i].slice(1);
                 // const [operation2 , barTwoIdx, barTwoHeight] = animations[i + 1];
                 const barOneStyle = arrayBars[barOneIdx].style;
                 // const barTwoStyle = arrayBars[barTwoIdx].style;
@@ -79,9 +78,6 @@ function VisualizeArray ({ len }) {
                 }, i * ANIMATION_SPEED)
             }
         }
-        const arrayBars = document.getElementsByClassName('array-bars')
-        arrayBars[-2].style.backgroundColor = 'aqua'
-        arrayBars[-1].style.backgroundColor = 'aqua'
     };
 
     const mergeSort = () => {
@@ -109,13 +105,17 @@ function VisualizeArray ({ len }) {
     };
 
     return (
-        <div className='array'>
-            {/* <ShuffleArray len={len} getArray={getArray}/> */}
+        <div className='container'>
+            <div className='array'>
+
             {arr.map((value, idx) => <div className='array-bar' key={idx} style={{height:`${value * 2}px`}}></div>)}
-            <button onClick={bubbleSort}>Bubble Sort</button>
-            <button onClick={mergeSort}>Merge Sort</button>
-            <button onClick={insertionSort}>Insertion Sort</button>
-            
+            </div>
+            <div className='buttons'>
+
+                <button onClick={bubbleSort}>Bubble Sort</button>
+                <button onClick={mergeSort}>Merge Sort</button>
+                <button onClick={insertionSort}>Insertion Sort</button>
+            </div>
             
         </div>
     )

@@ -8,7 +8,7 @@ function Slider ({handleChange}) {
 
     return (
             <div className='slider'>
-                <input type="range" min="50" max="350" value={value}
+                <input type="range" min="50" max="175" value={value}
                     onChange={({ target: { value: radius } }) => {
                     setValue(radius);
                     handleChange(radius);
