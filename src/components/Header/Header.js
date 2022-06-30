@@ -5,7 +5,7 @@ import Slider from './Slider';
 
 function Header ({handleLengthChange}) {
 
-    const [val, setVal] = useState(50)
+    const [val, setVal] = useState(10)
 
     const handleChange = (value) => {
         setVal(value)
