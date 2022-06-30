@@ -75,3 +75,18 @@ export function getMergeSortAnimations(array) {
       mainArray[k++] = auxiliaryArray[j++];
     }
 }
+
+export default function MergeSortInformation () {
+    return (
+        <div className='info'>
+            <h2>Merge Sort</h2>
+            <div className='complexity'>
+                <p>Time Complexity: <strong>O(n*log(n))</strong></p>
+                <p>Space Complexity: <strong>O(n)</strong></p>
+            </div>
+            <div className="explanation">
+                <p>Merge sort works by ...</p>
+            </div>
+        </div>
+    )
+}

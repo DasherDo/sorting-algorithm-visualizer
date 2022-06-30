@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import './Array.css'
-import { getMergeSortAnimations } from './SortingAlgorithms/MergeSort'
-import { bubbleSortAnimations } from './SortingAlgorithms/BubbleSort'
+import MergeSortInformation , { getMergeSortAnimations } from './SortingAlgorithms/MergeSort'
+import BubbleSortInformation, { bubbleSortAnimations } from './SortingAlgorithms/BubbleSort';
 import { insertionSortAnimations } from './SortingAlgorithms/InsertionSort';
 
 function VisualizeArray ({ len }) {
 
     const ANIMATION_SPEED = 1;
+
+    const [selectedAlgo, setSelectedAlgo] = useState('')
 
     let arr = Array.from({length:len}, (_, i) => i + 1 );
     // Start from the last element and swap
@@ -25,6 +27,7 @@ function VisualizeArray ({ len }) {
     }
     
     const bubbleSort = () => {
+        setSelectedAlgo('BubbleSort')
         const animations = bubbleSortAnimations(arr);
         for (let i = 0; i < animations.length - 1; i++) {
             const arrayBars = document.getElementsByClassName('array-bar');
@@ -81,6 +84,7 @@ function VisualizeArray ({ len }) {
     };
 
     const mergeSort = () => {
+        setSelectedAlgo('MergeSort')
         const animations = getMergeSortAnimations(arr);
         for (let i = 0; i < animations.length; i++) {
         const arrayBars = document.getElementsByClassName('array-bar');
@@ -116,7 +120,7 @@ function VisualizeArray ({ len }) {
                 <button onClick={mergeSort}>Merge Sort</button>
                 <button onClick={insertionSort}>Insertion Sort</button>
             </div>
-            
+            {selectedAlgo === 'BubbleSort' && <BubbleSortInformation /> || selectedAlgo === 'MergeSort' && <MergeSortInformation />}
         </div>
     )
 }

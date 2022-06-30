@@ -1,4 +1,7 @@
 .header {
     height: 15vh;
     background-color: rgb(168, 168, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
