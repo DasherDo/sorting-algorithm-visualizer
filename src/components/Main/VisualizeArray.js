@@ -3,10 +3,11 @@ import './Array.css'
 import MergeSortInformation , { getMergeSortAnimations } from './SortingAlgorithms/MergeSort'
 import BubbleSortInformation, { bubbleSortAnimations } from './SortingAlgorithms/BubbleSort';
 import { insertionSortAnimations } from './SortingAlgorithms/InsertionSort';
+import Personal from './Personal';
 
 function VisualizeArray ({ len }) {
 
-    const ANIMATION_SPEED = 1;
+    const ANIMATION_SPEED = 10;
 
     const [selectedAlgo, setSelectedAlgo] = useState('')
 
@@ -120,7 +121,7 @@ function VisualizeArray ({ len }) {
                 <button onClick={mergeSort}>Merge Sort</button>
                 <button onClick={insertionSort}>Insertion Sort</button>
             </div>
-            {selectedAlgo === 'BubbleSort' && <BubbleSortInformation /> || selectedAlgo === 'MergeSort' && <MergeSortInformation />}
+            {(!selectedAlgo && <Personal />) || (selectedAlgo === 'BubbleSort' && <BubbleSortInformation />) || (selectedAlgo === 'MergeSort' && <MergeSortInformation />)}
         </div>
     )
 }

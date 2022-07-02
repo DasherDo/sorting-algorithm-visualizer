@@ -85,7 +85,7 @@ export default function MergeSortInformation () {
                 <p>Space Complexity: <strong>O(n)</strong></p>
             </div>
             <div className="explanation">
-                <p>Merge sort works by ...</p>
+                <p>Merge sort takes a divide and conquer approach by splitting the initial array into two equal halves recursively, then combining the halves in a sorting manner until the whole array is sorted.</p>
             </div>
         </div>
     )

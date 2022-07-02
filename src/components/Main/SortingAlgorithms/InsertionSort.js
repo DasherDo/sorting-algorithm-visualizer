@@ -33,3 +33,20 @@ export function insertionSortAnimations(array)
     }
     return animations;
 } 
+
+export default function InsertionSortInformation () {
+    return (
+        <div className='info'>
+            <h2>Insertion Sort</h2>
+            <div className='complexity'>
+                <p>Time Complexity: <strong>O(n<sup>2</sup>)</strong></p>
+                <p>Space Complexity: <strong>O(1)</strong></p>
+            </div>
+            <div className='explanation'>
+                <p>
+                    Bubble sort works by comparing two values, then swapping them if they are in the incorrect order. After the first pass through the array, the highest value is in the last index, therefore for the next pass, the last index does not need to be checked. After each pass, the algorithm stops at one index earlier until the entire array is sorted. 
+                </p>
+            </div>
+        </div>
+    )
+}
