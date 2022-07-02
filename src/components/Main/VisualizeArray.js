@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Array.css'
 import MergeSortInformation , { getMergeSortAnimations } from './SortingAlgorithms/MergeSort'
 import BubbleSortInformation, { bubbleSortAnimations } from './SortingAlgorithms/BubbleSort';
-import { insertionSortAnimations } from './SortingAlgorithms/InsertionSort';
+import InsertionSortInformation, { insertionSortAnimations } from './SortingAlgorithms/InsertionSort';
 import Personal from './Personal';
 
 function VisualizeArray ({ len }) {
@@ -57,6 +57,7 @@ function VisualizeArray ({ len }) {
     };
 
     const insertionSort = () => {
+        setSelectedAlgo('InsertionSort')
         const animations = insertionSortAnimations(arr);
         for (let i = 0; i < animations.length; i++) {
             const arrayBars = document.getElementsByClassName('array-bar');
@@ -121,7 +122,7 @@ function VisualizeArray ({ len }) {
                 <button onClick={mergeSort}>Merge Sort</button>
                 <button onClick={insertionSort}>Insertion Sort</button>
             </div>
-            {(!selectedAlgo && <Personal />) || (selectedAlgo === 'BubbleSort' && <BubbleSortInformation />) || (selectedAlgo === 'MergeSort' && <MergeSortInformation />)}
+            {(!selectedAlgo && <Personal />) || (selectedAlgo === 'BubbleSort' && <BubbleSortInformation />) || (selectedAlgo === 'MergeSort' && <MergeSortInformation />) || (selectedAlgo === 'InsertionSort' && <InsertionSortInformation />)}
         </div>
     )
 }

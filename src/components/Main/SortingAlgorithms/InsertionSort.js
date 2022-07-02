@@ -44,7 +44,7 @@ export default function InsertionSortInformation () {
             </div>
             <div className='explanation'>
                 <p>
-                    Bubble sort works by comparing two values, then swapping them if they are in the incorrect order. After the first pass through the array, the highest value is in the last index, therefore for the next pass, the last index does not need to be checked. After each pass, the algorithm stops at one index earlier until the entire array is sorted. 
+                    Insertion Sort works by separating the array into a sorted and unsorted section. The first two elements are compared and placed into the correct position. Then the next element is placed into the correct position in the sorted section. Each new element from the unsorted region is moved to the correct position in the sorted region until the whole array has been transversed. 
                 </p>
             </div>
         </div>
