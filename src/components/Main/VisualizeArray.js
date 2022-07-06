@@ -4,6 +4,7 @@ import MergeSortInformation , { getMergeSortAnimations } from './SortingAlgorith
 import BubbleSortInformation, { bubbleSortAnimations } from './SortingAlgorithms/BubbleSort';
 import InsertionSortInformation, { insertionSortAnimations } from './SortingAlgorithms/InsertionSort';
 import Personal from './Personal';
+import QuickSortInformation, { getQuickSortAnimations } from './SortingAlgorithms/QuickSort';
 
 function VisualizeArray ({ len }) {
 
@@ -110,6 +111,35 @@ function VisualizeArray ({ len }) {
         }
     };
 
+    const quickSort = () => {
+        setSelectedAlgo('QuickSort');
+        const animations = getQuickSortAnimations(arr, 0, arr.length - 1);
+        for (let i = 0; i < animations.length; i++) {
+            const arrayBars = document.getElementsByClassName('array-bar');
+            const isColorChange = animations[i][0] === 'Comparing' || animations[i][0] === 'Done-Comparing';
+            if (isColorChange) {
+                const [operation, barOneIdx, barTwoIdx] = animations[i]
+                const barOneStyle = arrayBars[barOneIdx].style;
+                const barTwoStyle = arrayBars[barTwoIdx].style;
+                const color = operation === 'Comparing' ? 'red' : 'aqua'
+                setTimeout(() => {
+                    barOneStyle.backgroundColor = color;
+                    barTwoStyle.backgroundColor = color;
+                }, i * ANIMATION_SPEED)
+            }
+            else {
+                const [barOneIdx, barOneHeight] = animations[i].slice(1);
+                // const [operation2 , barTwoIdx, barTwoHeight] = animations[i + 1];
+                const barOneStyle = arrayBars[barOneIdx].style;
+                // const barTwoStyle = arrayBars[barTwoIdx].style;
+                setTimeout(() => {
+                    barOneStyle.height = `${barOneHeight * 2}px`;
+                    // barTwoStyle.height = `${barTwoHeight  * 2}px`;
+                }, i * ANIMATION_SPEED)
+            }
+        }
+    }
+
     return (
         <div className='container'>
             <div className='array'>
@@ -121,8 +151,9 @@ function VisualizeArray ({ len }) {
                 <button onClick={bubbleSort}>Bubble Sort</button>
                 <button onClick={mergeSort}>Merge Sort</button>
                 <button onClick={insertionSort}>Insertion Sort</button>
+                <button onClick={quickSort}>Quick Sort</button>
             </div>
-            {(!selectedAlgo && <Personal />) || (selectedAlgo === 'BubbleSort' && <BubbleSortInformation />) || (selectedAlgo === 'MergeSort' && <MergeSortInformation />) || (selectedAlgo === 'InsertionSort' && <InsertionSortInformation />)}
+            {(!selectedAlgo && <Personal />) || (selectedAlgo === 'BubbleSort' && <BubbleSortInformation />) || (selectedAlgo === 'MergeSort' && <MergeSortInformation />) || (selectedAlgo === 'InsertionSort' && <InsertionSortInformation />) || (selectedAlgo === 'QuickSort' && <QuickSortInformation />)}
         </div>
     )
 }
