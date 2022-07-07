@@ -5,10 +5,11 @@ import BubbleSortInformation, { bubbleSortAnimations } from './SortingAlgorithms
 import InsertionSortInformation, { insertionSortAnimations } from './SortingAlgorithms/InsertionSort';
 import Personal from './Personal';
 import QuickSortInformation, { getQuickSortAnimations } from './SortingAlgorithms/QuickSort';
+import HeapSortInformation, { getHeapSortAnimations } from './SortingAlgorithms/HeapSort';
 
 function VisualizeArray ({ len }) {
 
-    const ANIMATION_SPEED = 10;
+    const ANIMATION_SPEED = 1;
 
     const [selectedAlgo, setSelectedAlgo] = useState('')
 
@@ -56,6 +57,35 @@ function VisualizeArray ({ len }) {
             }
         }
     };
+
+    const heapSort = () => {
+        setSelectedAlgo('HeapSort');
+        const animations = getHeapSortAnimations(arr);
+        for (let i = 0; i < animations.length; i++) {
+            const arrayBars = document.getElementsByClassName('array-bar');
+            const isColorChange = animations[i][0] === 'Comparing' || animations[i][0] === 'Done-Comparing';
+            if (isColorChange) {
+                const [operation, barOneIdx, barTwoIdx] = animations[i]
+                const barOneStyle = arrayBars[barOneIdx].style;
+                const barTwoStyle = arrayBars[barTwoIdx].style;
+                const color = operation === 'Comparing' ? 'red' : 'aqua'
+                setTimeout(() => {
+                    barOneStyle.backgroundColor = color;
+                    barTwoStyle.backgroundColor = color;
+                }, i * ANIMATION_SPEED)
+            }
+            else {
+                const [barOneIdx, barOneHeight] = animations[i].slice(1);
+                // const [operation2 , barTwoIdx, barTwoHeight] = animations[i + 1];
+                const barOneStyle = arrayBars[barOneIdx].style;
+                // const barTwoStyle = arrayBars[barTwoIdx].style;
+                setTimeout(() => {
+                    barOneStyle.height = `${barOneHeight * 2}px`;
+                    // barTwoStyle.height = `${barTwoHeight  * 2}px`;
+                }, i * ANIMATION_SPEED)
+            }
+        }
+    }
 
     const insertionSort = () => {
         setSelectedAlgo('InsertionSort')
@@ -152,8 +182,9 @@ function VisualizeArray ({ len }) {
                 <button onClick={mergeSort}>Merge Sort</button>
                 <button onClick={insertionSort}>Insertion Sort</button>
                 <button onClick={quickSort}>Quick Sort</button>
+                <button onClick={heapSort}>Heap Sort</button>
             </div>
-            {(!selectedAlgo && <Personal />) || (selectedAlgo === 'BubbleSort' && <BubbleSortInformation />) || (selectedAlgo === 'MergeSort' && <MergeSortInformation />) || (selectedAlgo === 'InsertionSort' && <InsertionSortInformation />) || (selectedAlgo === 'QuickSort' && <QuickSortInformation />)}
+            {(!selectedAlgo && <Personal />) || (selectedAlgo === 'BubbleSort' && <BubbleSortInformation />) || (selectedAlgo === 'MergeSort' && <MergeSortInformation />) || (selectedAlgo === 'InsertionSort' && <InsertionSortInformation />) || (selectedAlgo === 'QuickSort' && <QuickSortInformation />) || (selectedAlgo === 'HeapSort' && <HeapSortInformation />)}
         </div>
     )
 }
