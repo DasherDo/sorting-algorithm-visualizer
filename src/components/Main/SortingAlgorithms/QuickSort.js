@@ -14,7 +14,6 @@ export function getQuickSortAnimations(arr, low, high) {
 		getQuickSortAnimations(arr, low, pi - 1);
 		getQuickSortAnimations(arr, pi + 1, high);
 	}
-    console.log(animations)
     return animations;
 }
 

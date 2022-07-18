@@ -1,5 +1,6 @@
 import React from 'react';
-import './Information.css'
+import './Information.css';
+
 
 
 export function bubbleSortAnimations (array) {
