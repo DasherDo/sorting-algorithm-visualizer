@@ -1,22 +1,28 @@
-import VisualizeArray from './components/Main/VisualizeArray'
+import VisualizeArray from './components/Main/VisualizeArray';
 import React, { useState } from 'react';
-import Header from './components/Header/Header'
-
+import Header from './components/Header/Header';
 
 function App() {
+	const [arrayLength, setArrayLength] = useState(25);
+	const [speed, setSpeed] = useState(10);
 
-  const [arrayLength, setArrayLength] = useState(25)
+	const handleLengthChange = (length) => {
+		setArrayLength(length);
+	};
 
-  const handleLengthChange = (length) => {
-    setArrayLength(length)
-  };
+	const handleSpeedChange = (speed) => {
+		setSpeed(speed);
+	};
 
-  return (
-    <div className="App">
-      <Header handleLengthChange={handleLengthChange}/>
-      <VisualizeArray len={arrayLength}/>
-    </div>
-  );
+	return (
+		<div className='App'>
+			<Header
+				handleLengthChange={handleLengthChange}
+				handleSpeedChange={handleSpeedChange}
+			/>
+			<VisualizeArray len={arrayLength} speed={speed} />
+		</div>
+	);
 }
 
 export default App;
