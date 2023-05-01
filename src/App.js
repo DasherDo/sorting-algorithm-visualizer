@@ -1,26 +1,19 @@
-import VisualizeArray from './components/Main/VisualizeArray';
-import React, { useState } from 'react';
-import Header from './components/Header/Header';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Array from './pages/Array';
+import Home from './pages/Home';
+import Colors from './pages/Colors';
 
 function App() {
-	const [arrayLength, setArrayLength] = useState(25);
-	const [speed, setSpeed] = useState(10);
-
-	const handleLengthChange = (length) => {
-		setArrayLength(length);
-	};
-
-	const handleSpeedChange = (speed) => {
-		setSpeed(speed);
-	};
-
 	return (
 		<div className='App'>
-			<Header
-				handleLengthChange={handleLengthChange}
-				handleSpeedChange={handleSpeedChange}
-			/>
-			<VisualizeArray len={arrayLength} speed={speed} />
+			<BrowserRouter>
+				<Routes>
+					<Route exact path='/' element={<Home />} />
+					<Route path='/array' element={<Array />} />
+					<Route path='/colors' element={<Colors />} />
+				</Routes>
+			</BrowserRouter>
 		</div>
 	);
 }
