@@ -1,4 +1,11 @@
 #canv {
-	width: 75%;
-	height: 75%;
+	height: 350px;
+	width: 350px;
+	object-fit: contain;
+	border: 1px solid black;
+}
+
+.color {
+	display: flex;
+	place-content: center;
 }
