@@ -2,8 +2,8 @@ import React from 'react';
 import './colors.css';
 
 function Colors() {
-	const CANVAS_WIDTH = 200;
-	const CANVAS_HEIGHT = 200;
+	const CANVAS_WIDTH = 350;
+	const CANVAS_HEIGHT = 350;
 
 	const shuffleArray = (arr) => {
 		for (let i = arr.length - 1; i > 0; i--) {
